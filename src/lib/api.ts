@@ -1,21 +1,22 @@
 type FetchOptions = {
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+  method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   headers?: Record<string, string>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body?: any;
 };
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export async function fetcher<T>(
   endpoint: string,
   options: FetchOptions = {}
 ): Promise<T> {
-  const { method = 'GET', headers = {}, body } = options;
+  const { method = "GET", headers = {}, body } = options;
 
   const config: RequestInit = {
     method,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       ...headers,
     },
   };
